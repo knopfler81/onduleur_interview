@@ -1,0 +1,20 @@
+<div class="col-xs-6">
+  <div class="onduleur_form">
+    <%= simple_form_for :query, url: onduleurs_path, method: :get, wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
+      <%= f.input :identifier, collection: Onduleur.select(:identifier).map {|o| o.identifier} ,  prompt: "Choississez un onduleur" %>
+      <%= f.button :submit, "Chercher", class:"btn btn-success" %>
+      <%= link_to "Voir tous les onduleurs", {controller: "onduleurs", action: 'index'}, class: "btn btn-success"  %>
+    <% end %>
+  </div>
+</div>
+  <div class="col-xs-6">
+    <div class="onduleur_form">
+      <%= simple_form_for :query, url: onduleurs_path, method: :get, wrapper: :inline_form, html: {class: 'form-inline'} do |f| %>
+        <%= f.input :datetime, collection: Onduleur.select(:datetime).map {|o| o.datetime} ,  prompt: "Chercher par date" %>
+
+        <%= f.button :submit, "Chercher", class:"btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+
+

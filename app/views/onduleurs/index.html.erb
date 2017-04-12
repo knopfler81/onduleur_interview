@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Production onduleurs</h1>
+  <div class="row">
+    <%= render 'form' %>
+  </div>
+  <div class="row">
+    <div class="onduleur_results">
+      <div class="col-md-8">
+        <%= flash[:notice] %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Identifier</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Energy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @onduleurs.each do |onduleur| %>
+              <tr>
+                <td><%= onduleur.identifier %></td>
+                <td><%= onduleur.get_date %></td>
+                <td><%= onduleur.get_time %></td>
+                <td><%= onduleur.energy %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-4 total_onduleur">
+        <% if @onduleurs.present? %>
+          <% if @onduleurs.first.identifier == @onduleurs.second.identifier  %>
+            <h2>Total onduleur N°: <%= @onduleurs.first.identifier %></h2>
+            <% else %>
+            <h2>Total des onduleurs: </h2>
+          <% end %>
+        <% end %>
+        <h3><%= @onduleurs.total_onduleur %></h3>
+        <h4>Importer un nouveau fichier CSV</h4>
+          <%= form_tag import_onduleurs_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <br>
+            <%= submit_tag "Envoyer", class: "btn btn-success"%>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

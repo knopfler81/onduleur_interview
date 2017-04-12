@@ -14,4 +14,16 @@ class Onduleur < ApplicationRecord
     end
     onduleur.inject(:+)
   end
+
+  def get_date
+    date = DateTime.strptime(datetime, "%d/%m/%y %R")
+    date.to_date
+    date.strftime("%d/%m/%Y")
+  end
+
+  def get_time
+    time = DateTime.strptime(datetime, "%d/%m/%y %R")
+    time.to_date
+    time.strftime("%R")
+  end
 end

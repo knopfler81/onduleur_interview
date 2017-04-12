@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 20170412222547) do
   enable_extension "plpgsql"
 
   create_table "onduleurs", force: :cascade do |t|
-    t.integer  "indentifier"
+    t.integer  "identifier"
     t.string   "datetime"
     t.integer  "energy"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
