@@ -12,7 +12,7 @@ class OnduleursController < ApplicationController
   private
 
   def filter_onduleurs
-    @onduleurs = Onduleur.where('identifier LIKE ?', params[:query][:identifier]) if params[:query][:identifier].present?
+    @onduleurs = Onduleur.where('cast(identifier as text) LIKE ?', params[:query][:identifier]) if params[:query][:identifier].present?
     @onduleurs = Onduleur.where('datetime LIKE ?', params[:query][:datetime]) if params[:query][:datetime].present?
   end
 end
